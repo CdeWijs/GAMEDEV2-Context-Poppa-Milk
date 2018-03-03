@@ -12,6 +12,8 @@ public class InputPC : InputSystem {
                 return Input.GetAxis("Horizontal");
             case GameAction.JUMP:
                 return Input.GetAxis("Vertical");
+            case GameAction.DUCK:
+                return Input.GetAxis("Vertical");
             default:
                 return 0;
         }

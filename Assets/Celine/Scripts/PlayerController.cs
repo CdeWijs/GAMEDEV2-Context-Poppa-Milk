@@ -29,6 +29,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 startPosition;
     private bool freezeControls = false;
 
+    // DUCKING
+    private float time;
+    private float duckTime = 2f;
+    private bool isSmall = false;
+    private Vector3 normalScale;
+
+
     private void Awake()
     {
         // Get inputsystem depending on device of player
@@ -38,6 +45,8 @@ public class PlayerController : MonoBehaviour
         groundCheck = transform.GetChild(0); // TEMP HACK!
         rigidBody2D = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
+
+        normalScale = transform.localScale;
     }
 
     private void Update()
@@ -50,6 +59,9 @@ public class PlayerController : MonoBehaviour
         // Check axes of inputsystem
         inputHorizontal = inputSystem.GetAxis(GameAction.MOVE_HORIZONTAL);
         inputVertical = inputSystem.GetAxis(GameAction.JUMP);
+
+        // Create a variable for the time
+        time += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -57,14 +69,16 @@ public class PlayerController : MonoBehaviour
         // If player isn't in achievement panel, player can move
         if (!freezeControls)
         {
+            MoveHorizontal();
+
             if (CheckIfGrounded() == true)
             {
-                MoveHorizontal();
                 Jump();
+                Duck();
             }
             else
             {
-                TurnMidJump();
+                //TurnMidJump();
             }
         }
     }
@@ -108,6 +122,29 @@ public class PlayerController : MonoBehaviour
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, JUMP_FORCE);
             tempMove = inputHorizontal;
             limbs.SetTrigger("jumpTrigger");
+        }
+    }
+
+    private void Duck()
+    {
+        if (inputVertical <= -0.01)
+        {
+            // Check if the player isn't already small
+            if (!isSmall)
+            {
+                // Change player's scale
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 0.6f, transform.localScale.z);
+                isSmall = true;
+                time = 0;
+            }
+        }
+
+        // If two seconds are over or the player jumps
+        if (isSmall && time >= duckTime || inputVertical >= 0.01)
+        {
+            // Change player's scale back
+            transform.localScale = normalScale;
+            isSmall = false;
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GameAction
 {
     JUMP,
+    DUCK,
     MOVE_HORIZONTAL,
 }
 

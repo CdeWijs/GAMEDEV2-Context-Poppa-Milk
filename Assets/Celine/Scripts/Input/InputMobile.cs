@@ -34,6 +34,8 @@ public class InputMobile : InputSystem {
                 return horizontalInput;
             case GameAction.JUMP:
                 return verticalInput;
+            case GameAction.DUCK:
+                return verticalInput;
             default:
                 return 0;
         }
@@ -45,92 +47,66 @@ public class InputMobile : InputSystem {
         {
             // get the first touch
             Touch firstTouch = Input.GetTouch(0);
+            DetectTouch(firstTouch);
             
-            // FIRST TOUCH
-            if (firstTouch.phase == TouchPhase.Began)
-            {
-                // JUMP
-                if (firstTouch.position.x < screenCenterX)
-                {
-                    verticalInput = 1;
-                }
-
-                firstTouchPosition1 = firstTouch.position;
-                lastTouchPosition1 = firstTouch.position;
-            }
-            else if (firstTouch.phase == TouchPhase.Moved)
-            {
-                lastTouchPosition1 = firstTouch.position;
-
-                if (firstTouch.position.x > screenCenterX)
-                {
-                    //Check if drag distance is greater than 20% of the screen height
-                    if (Mathf.Abs(lastTouchPosition1.x - firstTouchPosition1.x) > dragDistance || Mathf.Abs(lastTouchPosition1.y - firstTouchPosition1.y) > dragDistance)
-                    {
-                        if (Mathf.Abs(lastTouchPosition1.x - firstTouchPosition1.x) > Mathf.Abs(lastTouchPosition1.y - firstTouchPosition1.y))
-                        {   //the horizontal movement is greater than the vertical movement
-                            if (lastTouchPosition1.x > firstTouchPosition1.x)  //If the movement was to the right
-                            {
-                                horizontalInput = 1;
-                            }
-                            if (lastTouchPosition1.x < firstTouchPosition1.x) // If the movement was to the left
-                            {
-                                horizontalInput = -1;
-                            }
-                        }
-                    }
-                }
-            }
-            else if (firstTouch.phase == TouchPhase.Ended)
-            {
-                verticalInput = 0;
-                horizontalInput = 0;
-            }
-
-
             // get the second touch
             Touch secondTouch = Input.GetTouch(1);
+            DetectTouch(secondTouch);
+        }
+    }
 
-            // SECOND TOUCH
-            if (secondTouch.phase == TouchPhase.Began)
+    private void DetectTouch(Touch touch)
+    {
+        if (touch.phase == TouchPhase.Began)
+        {
+            firstTouchPosition2 = touch.position;
+            lastTouchPosition2 = touch.position;
+        }
+        else if (touch.phase == TouchPhase.Moved)
+        {
+            lastTouchPosition2 = touch.position;
+
+            if (touch.position.x > screenCenterX)
             {
-                // JUMP
-                if (secondTouch.position.x < screenCenterX)
+                //Check if drag distance is greater than 20% of the screen height
+                if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > dragDistance || Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y) > dragDistance)
                 {
-                    verticalInput = 1;
-                }
-
-                firstTouchPosition2 = secondTouch.position;
-                lastTouchPosition2 = secondTouch.position;
-            }
-            else if (secondTouch.phase == TouchPhase.Moved)
-            {
-                lastTouchPosition2 = secondTouch.position;
-
-                if (secondTouch.position.x > screenCenterX)
-                {
-                    //Check if drag distance is greater than 20% of the screen height
-                    if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > dragDistance || Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y) > dragDistance)
-                    {
-                        if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y))
-                        {   //the horizontal movement is greater than the vertical movement
-                            if (lastTouchPosition2.x > firstTouchPosition2.x)  //If the movement was to the right
-                            {
-                                horizontalInput = 1;
-                            }
-                            if (lastTouchPosition2.x < firstTouchPosition2.x) // If the movement was to the left
-                            {
-                                horizontalInput = -1;
-                            }
+                    if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y))
+                    {   //the horizontal movement is greater than the vertical movement
+                        if (lastTouchPosition2.x > firstTouchPosition2.x)  //If the movement was to the right
+                        {
+                            horizontalInput = 1;
+                        }
+                        if (lastTouchPosition2.x < firstTouchPosition2.x) // If the movement was to the left
+                        {
+                            horizontalInput = -1;
                         }
                     }
                 }
             }
-            else if (secondTouch.phase == TouchPhase.Ended)
+            else if (touch.position.x < screenCenterX)
             {
-                verticalInput = 0;
-                horizontalInput = 0;
+                //Check if drag distance is greater than 15% of the screen height
+                if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > dragDistance || Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y) > dragDistance)
+                {
+                    if (Mathf.Abs(lastTouchPosition2.x - firstTouchPosition2.x) > Mathf.Abs(lastTouchPosition2.y - firstTouchPosition2.y))
+                    {   //the vertical movement is greater than the horizontal movement
+                        if (lastTouchPosition2.y > firstTouchPosition2.y)  //If the movement was upwards
+                        {
+                            verticalInput = 1;
+                        }
+                        if (lastTouchPosition2.y < firstTouchPosition2.y) // If the movement was downwards
+                        {
+                            verticalInput = -1;
+                        }
+                    }
+                }
             }
+        }
+        else if (touch.phase == TouchPhase.Ended)
+        {
+            verticalInput = 0;
+            horizontalInput = 0;
         }
     }
 
