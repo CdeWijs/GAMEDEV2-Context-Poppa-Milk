@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("A game manager already exists");
             Destroy(this.gameObject);
         }
+        DontDestroyOnLoad(this);
     }
 
 	void Start () {
@@ -23,13 +24,9 @@ public class GameManager : MonoBehaviour {
         this.audioManager = this.GetComponent<AudioManager>();
         episodeManager.EpisodeInit();
         audioManager.AudioInit();
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Presentation);
 
         //episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         //episodeManager.NewEpisode(1);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        }
 }

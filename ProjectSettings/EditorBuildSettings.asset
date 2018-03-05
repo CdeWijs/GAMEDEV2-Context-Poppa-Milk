@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Celine/Player Movement.unity
     guid: f8a9cc6dab48bcf4581c7d852d64f3d3
   - enabled: 0
     path: Assets/Sten/Presentation.unity
     guid: 4f06d7892bdffc84ab98a58b4512ffae
+  - enabled: 1
+    path: Assets/Sten/Levels/Start.unity
+    guid: e467bed2594769f4c86fc6ad4e16007f
+  - enabled: 1
+    path: Assets/Sten/Levels/1Remanufacture.unity
+    guid: 6ff791228d285f94d973acb839d5e187
+  - enabled: 1
+    path: Assets/Sten/Levels/2RecycleReuse.unity
+    guid: 961baddd68d4d4842ac0434c1c803b32
