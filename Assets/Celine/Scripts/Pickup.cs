@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public GameObject player; // declare in inspector
-    public LayerMask layerMask;
+    public GameObject sprite;
+    public LayerMask layerMask; // player
     public AchievementDatabase achievementDatabaseScript;
 
+    private GameObject player;
     private PlayerController playerController;
     private ProductManager productManager;
     private InputSystem inputSystem;
     private List<Achievement> database;
 
-    private GameObject sprite;
     private Collider2D collision2D = null;
-    private Animator animator;
     private bool clickable = false;
     
     private void Start()
     {
         // Get player controller for player check, and input system for multiplatform use
-        playerController = player.GetComponent<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
+        player = playerController.gameObject;
         productManager = player.GetComponent<ProductManager>();
         inputSystem = playerController.inputSystem;
 
@@ -30,10 +30,7 @@ public class Pickup : MonoBehaviour
         database = achievementDatabaseScript.achievementDatabase;
 
         // Get blue circle and set inactive
-        sprite = transform.GetChild(0).gameObject;
         sprite.SetActive(false);
-
-        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -76,8 +73,6 @@ public class Pickup : MonoBehaviour
         // Change product of player
         productManager.ChangeProduct();
         productManager.index++;
-
-        animator.SetTrigger("onClick");
     }
 
     private void SetInActive()

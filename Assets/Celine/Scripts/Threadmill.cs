@@ -10,12 +10,18 @@ public class Threadmill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        objectsInTrigger.Add(collision.gameObject);
+        if (collision.gameObject.GetComponent<ThreadmillMovable>())
+        {
+            objectsInTrigger.Add(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        objectsInTrigger.Remove(collision.gameObject);
+        if (collision.gameObject.GetComponent<ThreadmillMovable>())
+        {
+            objectsInTrigger.Remove(collision.gameObject);
+        }
     }
 
     private void Update()
