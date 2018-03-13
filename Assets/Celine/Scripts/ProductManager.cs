@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductManager : MonoBehaviour {
-
+public class ProductManager : MonoBehaviour
+{
     public int index = 0;
     public Animator head;         // declare in inspector
 

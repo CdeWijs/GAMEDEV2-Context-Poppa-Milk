@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 10;
-    private const float JUMP_FORCE = 14;
+    private const float JUMP_FORCE = 10;
     private const float GROUND_RADIUS = 0.2f;
 
     // INPUT
@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
     // MOVEMENT
     private Rigidbody2D rigidBody2D;
     private float tempMove;
+
+    // DUCKING
+    private float time;
+    private float duckTime = 2f;
+    private bool isDucking = false;
+    private Vector3 normalScale;
 
     // GROUNDCHECK
     public LayerMask whatIsGround;  // declare in inspector
@@ -29,12 +35,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 startPosition;
     private bool freezeControls = false;
 
-    // DUCKING
-    private float time;
-    private float duckTime = 2f;
-    private bool isSmall = false;
-    private Vector3 normalScale;
-
 
     private void Awake()
     {
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
         groundCheck = transform.GetChild(0); // TEMP HACK!
         rigidBody2D = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
-
         normalScale = transform.localScale;
     }
 
@@ -60,40 +59,29 @@ public class PlayerController : MonoBehaviour
         inputHorizontal = inputSystem.GetAxis(GameAction.MOVE_HORIZONTAL);
         inputVertical = inputSystem.GetAxis(GameAction.JUMP);
 
-        // Create a variable for the time
+        // Time starts counting when player ducks
         time += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        // If player isn't in achievement panel, player can move
+        // If player isn't in UI panel, player can move
         if (!freezeControls)
         {
             MoveHorizontal();
-
+            // Player can only jump or duck if he touches a ground object
             if (CheckIfGrounded() == true)
             {
                 Jump();
                 Duck();
             }
-            else
-            {
-                //TurnMidJump();
-            }
         }
     }
 
-    bool CheckIfGrounded()
+    private bool CheckIfGrounded()
     {
-        // Check if player touches a ground object
-        if (Physics2D.OverlapCircle(groundCheck.position, GROUND_RADIUS, whatIsGround))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        // Check if player touches a ground object. If yes, return true.
+        return (Physics2D.OverlapCircle(groundCheck.position, GROUND_RADIUS, whatIsGround));
     }
 
     private void MoveHorizontal()
@@ -129,22 +117,24 @@ public class PlayerController : MonoBehaviour
     {
         if (inputVertical <= -0.01)
         {
-            // Check if the player isn't already small
-            if (!isSmall)
+            // Check if the player isn't already ducking
+            if (!isDucking)
             {
                 // Change player's scale
+                // TEMP HACK: Waiting for animations
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 0.6f, transform.localScale.z);
-                isSmall = true;
+                isDucking = true;
                 time = 0;
             }
         }
 
         // If two seconds are over or the player jumps
-        if (isSmall && time >= duckTime || inputVertical >= 0.01)
+        if (isDucking && time >= duckTime || inputVertical >= 0.01)
         {
             // Change player's scale back
+            // TEMP HACK: Waiting for animations
             transform.localScale = normalScale;
-            isSmall = false;
+            isDucking = false;
         }
     }
 
@@ -160,18 +150,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-    }
-
-    private void TurnMidJump()
-    {
-        if (tempMove > 0.01 && inputHorizontal < -0.01)
-        {
-            rigidBody2D.velocity = new Vector2(inputHorizontal * SPEED * 0.3f, rigidBody2D.velocity.y);
-        }
-        else if (tempMove < -0.01 && inputHorizontal > 0.01)
-        {
-            rigidBody2D.velocity = new Vector2(inputHorizontal * SPEED * 0.3f, rigidBody2D.velocity.y);
-        }
     }
 
     // Called from Killzone

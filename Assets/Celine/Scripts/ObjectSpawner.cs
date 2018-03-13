@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectInstantiator : MonoBehaviour {
+public class ObjectSpawner : MonoBehaviour {
 
     public GameObject objectPrefab;
     public float timeBetweenObjects = 5.0f;
@@ -37,8 +37,7 @@ public class ObjectInstantiator : MonoBehaviour {
                 {
                     objectPool[i].SetActive(true);
                     objectPool[i].transform.position = transform.position;
-                    objectPool[i].transform.GetChild(0).transform.position = transform.position;
-                    objectPool[i].GetComponentInChildren<RecyclePickup>().SetClickable();
+                    objectPool[i].transform.GetChild(0).GetComponent<ObjectPickup>().SetRandom();
 
                     // If one object has been set active, stop looping
                     return;

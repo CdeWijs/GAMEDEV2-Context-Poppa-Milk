@@ -30,7 +30,6 @@ public class Threadmill : MonoBehaviour
         {
             for (int i = 0; i < objectsInTrigger.Count; i++)
             {
-                Debug.Log(objectsInTrigger[i]);
                 objectsInTrigger[i].transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
         }
