@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class Pickup : MonoBehaviour, IInteractable
 {
     public GameObject sprite;
     public LayerMask layerMask; // player
@@ -16,7 +16,10 @@ public class Pickup : MonoBehaviour
 
     private Collider2D collision2D = null;
     private bool clickable = false;
-    
+
+    [SerializeField]
+    private float addDuration = 0.2f;
+
     private void Start()
     {
         // Get player controller for player check, and input system for multiplatform use
@@ -43,18 +46,20 @@ public class Pickup : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+        //LETS DISCUSS IF THIS IS NEEDED?
+    public void OnTriggerEnter(Collider collision)
     {
-        if (collision.GetComponent<PlayerController>())
+        Debug.Log("Collided");
+        if (collision.GetComponentInParent<PlayerController>())
         {
             sprite.SetActive(true);
             clickable = true;
-            collision2D = collision;
+            //collision2D = collision;
+            Debug.Log("IN RANGE");
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.GetComponent<PlayerController>())
         {
@@ -65,14 +70,18 @@ public class Pickup : MonoBehaviour
     
     public void OnClick()
     {
-        // Unlock achievement and iterate to next one with variable from the achievementdatabase script
-        database[achievementDatabaseScript.index].isUnlocked = true;
-        achievementDatabaseScript.achievementPanel.UpdateList();
-        achievementDatabaseScript.index++;
+        if (clickable) {
+            // Unlock achievement and iterate to next one with variable from the achievementdatabase script
+            database[achievementDatabaseScript.index].isUnlocked = true;
+            achievementDatabaseScript.achievementPanel.UpdateList();
+            achievementDatabaseScript.index++;
 
-        // Change product of player
-        productManager.ChangeProduct();
-        productManager.index++;
+            // Change product of player
+            productManager.ChangeProduct();
+            productManager.index++;
+            GameManager.instance.levelTimer.AddToTimer(addDuration);
+            SetInActive();
+            }
     }
 
     private void SetInActive()

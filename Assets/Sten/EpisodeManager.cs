@@ -78,9 +78,9 @@ public class EpisodeManager : MonoBehaviour {
 
     //This returns true if poppa is still talking, return new int for the next line upon completion
     private IEnumerator CheckIfTalking(Episode ep) {
-        Debug.Log("still playing");
+        //Debug.Log("still playing");
         yield return new WaitWhile(()=>audioManager.PoppaMilk.isPlaying);
-        Debug.Log("no longer playing");
+        //Debug.Log("no longer playing");
         next = true;
         stage++;
     }
@@ -106,7 +106,7 @@ public class EpisodeManager : MonoBehaviour {
                 break;
             case Episode.Presentation:
                 poppaAnimator.SetBool("isTalking", true);
-                Debug.Log(GameManager.instance.poppaMilk.GetComponent<Animator>().GetBool("isTalking"));
+                //Debug.Log(GameManager.instance.poppaMilk.GetComponent<Animator>().GetBool("isTalking"));
                 subtitleTrack.text = presentationLines[currentTextLine];
                 audioManager.PlayPoppaMilk(currentAudioLine, ep);
                 break;

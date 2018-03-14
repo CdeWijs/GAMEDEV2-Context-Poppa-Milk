@@ -10,7 +10,7 @@ public class TextReader : MonoBehaviour {
     //Function to read any given text file that converts all data to string arrays
     public bool Load(string fileName,List<string>l) {
         string line;
-        Debug.Log(fileName + "read");
+        //Debug.Log(fileName + "read");
             // Create a new StreamReader, tell it which file to read and what encoding the file was saved as
         StreamReader theReader = new StreamReader(Application.streamingAssetsPath + "/" + fileName + ".txt", Encoding.Default);
         using (theReader) {

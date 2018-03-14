@@ -13,5 +13,6 @@ public abstract class InputSystem
 
     public abstract float GetAxis(GameAction action);
     public abstract bool GetColliderInteraction(Collider2D collision, LayerMask layerMask, string name);
+    public abstract void CheckInput();
 }
 

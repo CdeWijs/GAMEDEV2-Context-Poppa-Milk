@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPickup : MonoBehaviour
+public class ObjectPickup : MonoBehaviour, IInteractable
 {
     public LayerMask layerMask;     // declare in inspector to "Object"
 
     [SerializeField]
     private bool clickable;
-    
+    [SerializeField]
+    private int scoreAmount = 10;
     private PlayerController playerController;
     private InputSystem inputSystem;
     
@@ -27,22 +28,26 @@ public class ObjectPickup : MonoBehaviour
     private void Update()
     {
         transform.parent.transform.position = transform.position;
-
+        //PLACED THIS IN THE PLAYERCONTROLLER, WITH THE NEW CHECKINPUT FUNC.
+        /* 
         if (clickable && inputSystem.GetColliderInteraction(collision2D, layerMask, transform.parent.name))
         {
             Debug.Log("Clicked");
             OnClick();
-        }
+        }*/
     }
 
     public void OnClick()
     {
-        SetInActive();
+        if (clickable) {
+            SetInActive();
+            }
     }
     
     // Called from ObjectKillzone
     private void SetInActive()
     {
+        GameManager.instance.scoreTracker.UpdateScore(scoreAmount);
         transform.parent.gameObject.SetActive(false);
     }
     

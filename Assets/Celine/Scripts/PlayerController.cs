@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 10;
-    private const float JUMP_FORCE = 10;
+    private const float JUMP_FORCE = 20;
     private const float GROUND_RADIUS = 0.2f;
 
     // INPUT
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
         {
             InputMobile.instance.CheckInput();
         }
-
         // Check axes of inputsystem
         inputHorizontal = inputSystem.GetAxis(GameAction.MOVE_HORIZONTAL);
         inputVertical = inputSystem.GetAxis(GameAction.JUMP);
-
+        //CHECK FOR INPUT
+        inputSystem.CheckInput();
         // Time starts counting when player ducks
         time += Time.deltaTime;
     }
@@ -105,12 +105,15 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (inputVertical >= 0.01)
-        {
+        if (inputVertical >= 0.01) {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, JUMP_FORCE);
             tempMove = inputHorizontal;
             limbs.SetTrigger("jumpTrigger");
-        }
+            //koppierite vincent
+            if (rigidBody2D.velocity.y < 0 && rigidBody2D.velocity.y > -5f) {
+                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * (1.5f * Time.deltaTime));
+                }
+            }
     }
 
     private void Duck()

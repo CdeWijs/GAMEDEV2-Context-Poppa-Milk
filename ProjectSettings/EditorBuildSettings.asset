@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Celine/Player Movement.unity
     guid: f8a9cc6dab48bcf4581c7d852d64f3d3
   - enabled: 0
-    path: Assets/Sten/Presentation.unity
+    path: Assets/Sten/Levels/Presentation.unity
     guid: 4f06d7892bdffc84ab98a58b4512ffae
   - enabled: 1
     path: Assets/Sten/Levels/Start.unity
@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sten/Levels/2RecycleReuse.unity
     guid: 961baddd68d4d4842ac0434c1c803b32
+  - enabled: 1
+    path: Assets/Sten/Levels/EndScene.unity
+    guid: 11fb3277c3eb61248a193ea312769e20

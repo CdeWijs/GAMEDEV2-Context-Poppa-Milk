@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour {
                     break;
 
                 case Episode.Presentation:
-                    Debug.Log("playing sound presentation");
+                    //Debug.Log("playing sound presentation");
                     PoppaMilk.clip = presentation[sound];
                     PoppaMilk.Play();
                     break;
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     private IEnumerator QueuePoppaMilk(int sound, Episode ep) {
-        Debug.Log("Queued");
+        //Debug.Log("Queued");
         yield return new WaitWhile(() => PoppaMilk.isPlaying);
         switch (ep) {
             case Episode.Episode1:
@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour {
                 PoppaMilk.Play();
                 break;
         }
-        Debug.Log("unloaded");
+        //Debug.Log("unloaded");
     }
 
     //Play sounds that have to do with interactions, 3 sounds can play at once
