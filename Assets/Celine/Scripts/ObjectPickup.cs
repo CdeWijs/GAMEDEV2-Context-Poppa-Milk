@@ -39,9 +39,10 @@ public class ObjectPickup : MonoBehaviour, IInteractable
 
     public void OnClick()
     {
-        if (clickable) {
+        if (clickable)
+        {
             SetInActive();
-            }
+        }
     }
     
     // Called from ObjectKillzone

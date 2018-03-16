@@ -35,18 +35,8 @@ public class Pickup : MonoBehaviour, IInteractable
         // Get blue circle and set inactive
         sprite.SetActive(false);
     }
-
-    private void Update()
-    {
-        if (clickable)
-        {
-            if (inputSystem.GetColliderInteraction(collision2D, layerMask, this.name))
-            {
-                OnClick();
-            }
-        }
-    }
-        //LETS DISCUSS IF THIS IS NEEDED?
+  
+    //LETS DISCUSS IF THIS IS NEEDED?
     public void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collided");
