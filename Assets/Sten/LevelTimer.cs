@@ -60,6 +60,7 @@ public class LevelTimer : MonoBehaviour {
     //Function to add time to extend the longelivety of this level
     public float AddToTimer(float amount) {
         timerCurrent += amount;
+        Mathf.Clamp(timerCurrent, 0, 1f);
         return timerCurrent;
         }
     }

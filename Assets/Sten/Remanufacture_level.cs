@@ -8,7 +8,7 @@ public class Remanufacture_level : MonoBehaviour {
     [SerializeField]
     private float timerDuration = 1;
     [SerializeField]
-    private float subtractAmount = 0.05f; //The step the timer downgrades
+    private float subtractAmount = 0.1f; //The step the timer downgrades
     [SerializeField]
     private bool hasTimer = true;
     //Setup level with the correct lines

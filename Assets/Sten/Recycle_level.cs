@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Recycle_level : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        GameManager.instance.scoreTracker.ScoreVisibility(true);
-        //GameManager.instance.levelTimer.SetupTimer(0, 0, false);
-        GameManager.instance.levelTimer.SetupInvisibleTimer(1, 0.1f, true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    [SerializeField]
+    private float timerDuration = 1;
+    [SerializeField]
+    private float subtractAmount = 0.1f; //The step the timer downgrades
+    [SerializeField]
+    private bool hasTimer = true;
+    //Setup level with the correct lines
+    void Start() {
+        GameManager.instance.episodeManager.ResetLines();
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
+        }
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

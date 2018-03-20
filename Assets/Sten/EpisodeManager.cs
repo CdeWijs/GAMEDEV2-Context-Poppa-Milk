@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum Episode {Episode1, Episode2, Episode3,Presentation};
+public enum Episode {Episode1, Episode2, Episode3,Episode4,Presentation};
 
 public class EpisodeManager : MonoBehaviour {
     //Two components needed to create narrative
@@ -15,6 +15,7 @@ public class EpisodeManager : MonoBehaviour {
     private List<string> episode1Lines = new List<string>();
     private List<string> episode2Lines = new List<string>();
     private List<string> episode3Lines = new List<string>();
+    private List<string> episode4Lines = new List<string>();
 
     //UI elements
     [SerializeField]
@@ -47,6 +48,7 @@ public class EpisodeManager : MonoBehaviour {
         textReader.Load(Episode.Episode1.ToString(), episode1Lines);
         textReader.Load(Episode.Episode2.ToString(), episode2Lines);
         textReader.Load(Episode.Episode3.ToString(), episode3Lines);
+        textReader.Load(Episode.Episode4.ToString(), episode4Lines);
         textReader.Load(Episode.Presentation.ToString(),presentationLines);
     }
     //Start the game!
@@ -102,6 +104,11 @@ public class EpisodeManager : MonoBehaviour {
             case Episode.Episode3:
                 poppaAnimator.SetBool("isTalking", true);
                 subtitleTrack.text = episode3Lines[currentTextLine];
+                audioManager.PlayPoppaMilk(currentAudioLine, ep);
+                break;
+            case Episode.Episode4:
+                poppaAnimator.SetBool("isTalking", true);
+                subtitleTrack.text = episode4Lines[currentTextLine];
                 audioManager.PlayPoppaMilk(currentAudioLine, ep);
                 break;
             case Episode.Presentation:
@@ -163,6 +170,21 @@ public class EpisodeManager : MonoBehaviour {
                 }
                 break;
 
+            case Episode.Episode4:
+                if (currentTextLine < episode4Lines.Count - 1) {
+                    currentAudioLine++;
+                    currentTextLine++;
+                    Debug.Log("next: " + currentTextLine);
+                    next = false;
+                    poppaAnimator.SetBool("isTalking", false);
+                    }
+                else {
+                    currentTextLine = 0;
+                    currentAudioLine = 0;
+                    stage = 0;
+                    next = false;
+                    }
+                break;
             case Episode.Presentation:
                 if(currentTextLine < presentationLines.Count -1) {
                     currentAudioLine++;
