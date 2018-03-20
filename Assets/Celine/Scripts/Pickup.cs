@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour, IInteractable
-{
+public class Pickup : MonoBehaviour, IInteractable {
     public GameObject sprite;
     public LayerMask layerMask; // player
     public AchievementDatabase achievementDatabaseScript;
@@ -20,8 +19,12 @@ public class Pickup : MonoBehaviour, IInteractable
     [SerializeField]
     private float addDuration = 0.2f;
 
-    private void Start()
-    {
+    [SerializeField]
+    private bool leavePartsBehind = false;
+    [SerializeField]
+    private GameObject debris;
+
+    private void Start() {
         // Get player controller for player check, and input system for multiplatform use
         playerController = FindObjectOfType<PlayerController>();
         player = playerController.gameObject;
@@ -35,13 +38,20 @@ public class Pickup : MonoBehaviour, IInteractable
         // Get blue circle and set inactive
         sprite.SetActive(false);
     }
-  
-    //LETS DISCUSS IF THIS IS NEEDED?
-    public void OnTriggerEnter(Collider collision)
-    {
-        Debug.Log("Collided");
-        if (collision.GetComponentInParent<PlayerController>())
+
+    private void Update() {
+        /*if (clickable)
         {
+            if (inputSystem.GetColliderInteraction(collision2D, layerMask, this.name))
+            {
+                OnClick();
+            }
+        }*/
+    }
+
+    public void OnTriggerEnter(Collider collision) {
+        Debug.Log("Collided");
+        if (collision.GetComponentInParent<PlayerController>()) {
             sprite.SetActive(true);
             clickable = true;
             //collision2D = collision;
@@ -49,17 +59,14 @@ public class Pickup : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.GetComponent<PlayerController>())
-        {
+    private void OnTriggerExit(Collider collision) {
+        if (collision.GetComponent<PlayerController>()) {
             sprite.SetActive(false);
             clickable = false;
         }
     }
-    
-    public void OnClick()
-    {
+
+    public void OnClick() {
         if (clickable) {
             // Unlock achievement and iterate to next one with variable from the achievementdatabase script
             database[achievementDatabaseScript.index].isUnlocked = true;
@@ -71,11 +78,13 @@ public class Pickup : MonoBehaviour, IInteractable
             productManager.index++;
             GameManager.instance.levelTimer.AddToTimer(addDuration);
             SetInActive();
-            }
+        }
     }
 
-    private void SetInActive()
-    {
+    private void SetInActive() {
+        if (leavePartsBehind) {
+            Instantiate(debris, this.transform.position, this.transform.rotation);
+        }
         gameObject.SetActive(false);
     }
 }

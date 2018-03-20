@@ -145,6 +145,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   achievementDatabaseScript: {fileID: 0}
+  addDuration: 0.2
+  leavePartsBehind: 0
+  debris: {fileID: 1477060403240848, guid: 949bf80c81006ca41ab705b597e318fe, type: 2}
 --- !u!212 &212751733428547702
 SpriteRenderer:
   m_ObjectHideFlags: 1

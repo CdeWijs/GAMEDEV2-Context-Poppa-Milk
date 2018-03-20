@@ -1028,6 +1028,7 @@ Transform:
   - {fileID: 779000322}
   - {fileID: 1725409959}
   - {fileID: 1969704869}
+  - {fileID: 1579419573}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1920,7 +1921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579419573}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TargetPos
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1932,12 +1933,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1579419572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7, y: 10.84, z: 10.47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0.05234995, y: 0.07080195, z: -0.0399383}
+  m_LocalScale: {x: 0.004999996, y: 0.0049176295, z: 0.004999996}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 541554539}
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663981034
 Prefab:
