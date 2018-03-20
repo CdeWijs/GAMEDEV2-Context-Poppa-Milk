@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour, IInteractable {
     public GameObject sprite;
-    public LayerMask layerMask; // player
+    public Product thisProduct; // declare in inspector
     public AchievementDatabase achievementDatabaseScript;
 
     private GameObject player;
@@ -12,8 +12,7 @@ public class Pickup : MonoBehaviour, IInteractable {
     private ProductManager productManager;
     private InputSystem inputSystem;
     private List<Achievement> database;
-
-    private Collider2D collision2D = null;
+    
     private bool clickable = false;
 
     [SerializeField]
@@ -32,8 +31,8 @@ public class Pickup : MonoBehaviour, IInteractable {
         inputSystem = playerController.inputSystem;
 
         // Get achievements
-        achievementDatabaseScript = FindObjectOfType<AchievementDatabase>();
-        database = achievementDatabaseScript.achievementDatabase;
+        //achievementDatabaseScript = FindObjectOfType<AchievementDatabase>();
+        //database = achievementDatabaseScript.achievementDatabase;
 
         // Get blue circle and set inactive
         sprite.SetActive(false);
@@ -69,14 +68,13 @@ public class Pickup : MonoBehaviour, IInteractable {
     public void OnClick() {
         if (clickable) {
             // Unlock achievement and iterate to next one with variable from the achievementdatabase script
-            database[achievementDatabaseScript.index].isUnlocked = true;
-            achievementDatabaseScript.achievementPanel.UpdateList();
-            achievementDatabaseScript.index++;
+            //database[achievementDatabaseScript.index].isUnlocked = true;
+            //achievementDatabaseScript.achievementPanel.UpdateList();
+            //achievementDatabaseScript.index++;
 
             // Change product of player
-            productManager.ChangeProduct();
-            productManager.index++;
-            GameManager.instance.levelTimer.AddToTimer(addDuration);
+            productManager.ChangeProduct(thisProduct);
+            //GameManager.instance.levelTimer.AddToTimer(addDuration);
             SetInActive();
         }
     }
