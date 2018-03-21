@@ -601,12 +601,27 @@ MonoBehaviour:
   PoppaMilk: {fileID: 1423456426}
   poppaEpisode1:
   - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: e319e82a1436f3248989c6e736f2d437, type: 3}
+  - {fileID: 8300000, guid: 4bfff32a56a3f7943b868c45341ce2c3, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
   poppaEpisode2:
   - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
   poppaEpisode3:
   - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
   presentation:
   - {fileID: 8300000, guid: caafc8892dbed844ea13b89ef7e4b596, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  - {fileID: 8300000, guid: 6159e5fdbcc1271449633d7b6f9590c9, type: 3}
+  SoyBoy: {fileID: 0}
+  soyEpisode2: []
+  soyEpisode3: []
+  soyEpisode4: []
   interactableSource1: {fileID: 1423456425}
   interactableSource2: {fileID: 1423456424}
   interactableSource3: {fileID: 1423456421}
@@ -655,6 +670,7 @@ MonoBehaviour:
   timer: {fileID: 208926707}
   timerCurrent: 1
   subtractAmount: 0.1
+  currentLevel: {fileID: 0}
 --- !u!114 &352550913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 330}
   m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &604236780
@@ -899,7 +915,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -932,8 +948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.7431641}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_AnchoredPosition: {x: 0, y: -55}
+  m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &761835757
 GameObject:
@@ -1208,14 +1224,14 @@ RectTransform:
   m_GameObject: {fileID: 907577077}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68750566, y: 0.13931707, z: 1.300813}
+  m_LocalScale: {x: 0.1795429, y: 0.053193893, z: 1.300813}
   m_Children: []
   m_Father: {fileID: 761835758}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 55.80492}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 5000, y: 934.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907577079
@@ -2321,8 +2337,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 352550907}
-        m_MethodName: FirstEpisode
+      - m_Target: {fileID: 1728060847}
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

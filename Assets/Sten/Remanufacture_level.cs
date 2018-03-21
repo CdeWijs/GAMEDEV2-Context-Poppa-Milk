@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Remanufacture_level : MonoBehaviour {
+public class Remanufacture_level : MonoBehaviour,ILevel {
 
     [SerializeField]
     private float timerDuration = 1;
@@ -13,12 +14,17 @@ public class Remanufacture_level : MonoBehaviour {
     private bool hasTimer = true;
     //Setup level with the correct lines
     void Start() {
-        GameManager.instance.episodeManager.ResetLines();
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
         GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
+        GameManager.instance.levelTimer.currentLevel = this.gameObject;
         }
 
     void Update() { }
+
+    public IEnumerator EndLevelSequence() {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
+        }
     }
 
 /*

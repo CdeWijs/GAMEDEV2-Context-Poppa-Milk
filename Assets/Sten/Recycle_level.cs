@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Recycle_level : MonoBehaviour {
+public class Recycle_level : MonoBehaviour, ILevel {
 
     // Use this for initialization
     [SerializeField]
@@ -13,12 +14,30 @@ public class Recycle_level : MonoBehaviour {
     private bool hasTimer = true;
     //Setup level with the correct lines
     void Start() {
-        GameManager.instance.episodeManager.ResetLines();
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
+        GameManager.instance.levelTimer.currentLevel = this.gameObject;
+        StartCoroutine(LevelDialogues());
         }
     // Update is called once per frame
     void Update () {
 		
 	}
-}
+    public IEnumerator LevelDialogues() {
+        yield return new WaitForSeconds(3);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        }
+    public IEnumerator EndLevelSequence() {
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
+        }
+    }

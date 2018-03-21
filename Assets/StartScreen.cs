@@ -14,4 +14,19 @@ public class StartScreen : MonoBehaviour {
         txtReader.Load("StartScreen", randomFacts);
         factsUI.text = randomFacts[Random.Range(0, randomFacts.Count)];
 	}
+
+    public void StartGame() {
+        StartCoroutine(KickOff());
+        }
+
+    public IEnumerator KickOff() {
+        GameManager.instance.episodeManager.ResetLines();
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        Debug.Log("1");
+        yield return new WaitForSeconds(5);
+        Debug.Log("2");
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.FirstEpisode();
+        }
 }
