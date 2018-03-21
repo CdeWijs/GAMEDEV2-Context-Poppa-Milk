@@ -9,12 +9,12 @@ public class Recycle_level : MonoBehaviour, ILevel {
     [SerializeField]
     private float timerDuration = 1;
     [SerializeField]
-    private float subtractAmount = 0.1f; //The step the timer downgrades
+    private float subtractAmount = 0.03f; //The step the timer downgrades
     [SerializeField]
     private bool hasTimer = true;
     //Setup level with the correct lines
     void Start() {
-        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+
         GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
         GameManager.instance.levelTimer.currentLevel = this.gameObject;
         StartCoroutine(LevelDialogues());
@@ -24,7 +24,9 @@ public class Recycle_level : MonoBehaviour, ILevel {
 		
 	}
     public IEnumerator LevelDialogues() {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);

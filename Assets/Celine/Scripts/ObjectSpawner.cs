@@ -36,6 +36,7 @@ public class ObjectSpawner : MonoBehaviour {
                 if (!objectPool[i].activeInHierarchy)
                 {
                     objectPool[i].SetActive(true);
+                    objectPool[i].transform.rotation = new Quaternion(0, 0, 0,0);
                     objectPool[i].transform.position = transform.position;
                     objectPool[i].transform.GetChild(0).GetComponent<ObjectPickup>().SetRandom();
 
