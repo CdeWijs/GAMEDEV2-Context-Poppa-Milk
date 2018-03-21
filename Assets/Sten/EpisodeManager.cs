@@ -35,10 +35,6 @@ public class EpisodeManager : MonoBehaviour {
     private List<string> presentationLines = new List<string>();
     private int stage = 0;
 
-    //Episode 1 = start (scene 0)
-    //Episode 2 = remanufacture (scene 1)
-    //Episode 3 = recycle (scene 2)
-
     //Solid init to be called on reset for example
     public void EpisodeInit() {
         audioManager = this.GetComponent<AudioManager>();
@@ -58,8 +54,8 @@ public class EpisodeManager : MonoBehaviour {
 
     //function to setup everything for a new episode including changing the scene
     public int NewEpisode(int ep) {
-        currentAudioLine = 0;
-        currentTextLine = 0;
+        //currentAudioLine = 0;
+        //currentTextLine = 0;
         currentEpisode = ep;
         SceneManager.LoadScene(ep);
         return currentEpisode;
@@ -70,7 +66,7 @@ public class EpisodeManager : MonoBehaviour {
         Debug.Log("initiating countdown");
         yield return new WaitForSeconds(5f);
         NewEpisode(currentEpisode +=1);
-        Debug.Log("next scene!" + currentEpisode);
+        Debug.Log("next scene: " + currentEpisode);
         }
 
     //Easy way to call the audio and subs function, if called proceeds to the next line and audio
@@ -212,4 +208,7 @@ public class EpisodeManager : MonoBehaviour {
         next = false;
         }
 
+    public int GetEpisode() {
+        return currentEpisode;
+        }
 }

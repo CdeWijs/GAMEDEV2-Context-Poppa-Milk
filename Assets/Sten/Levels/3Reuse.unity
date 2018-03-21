@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4bf9118da536d4792c3fe4aac3be58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDuration: 10
+  levelDuration: 2
 --- !u!4 &689974464 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4222775651356804, guid: 6874a5e2d630cd240a50b936c23c9be6,
@@ -1518,7 +1518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa49221412f59d44b9919df660384f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
   head: {fileID: 2139192579}
 --- !u!114 &1205408862
 MonoBehaviour:

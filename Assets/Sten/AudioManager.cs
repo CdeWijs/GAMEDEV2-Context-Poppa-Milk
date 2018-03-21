@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PoppaMilk{Scenario1,Scenario2,Scenario3};
+public enum Soyboy { Scenario1, Scenario2, Scenario3 };
 public enum InteractableSound {PickupSound};
 public enum PlayerSound {DieSound};
 
@@ -18,6 +19,16 @@ public class AudioManager : MonoBehaviour {
     private AudioClip[] poppaEpisode3;
     [SerializeField]
     private AudioClip[] presentation;
+
+    [SerializeField]
+    public AudioSource SoyBoy;
+    private AudioClip[] soyEpisode1;
+    [SerializeField]
+    private AudioClip[] soyEpisode2;
+    [SerializeField]
+    private AudioClip[] soyEpisode3;
+    [SerializeField]
+    private AudioClip[] soyEpisode4;
 
     [SerializeField]
     private AudioSource interactableSource1;
@@ -96,6 +107,71 @@ public class AudioManager : MonoBehaviour {
         }
         //Debug.Log("unloaded");
     }
+
+
+    public AudioSource PlaySoyBoy(int sound, Episode ep) {
+        if (PoppaMilk.isPlaying) {
+            StartCoroutine(QueuePoppaMilk(sound, ep));
+            }
+        else {
+            switch (ep) {
+                case Episode.Episode1:
+                    Debug.Log("Playing sound ep1");
+                    PoppaMilk.clip = poppaEpisode1[sound];
+                    PoppaMilk.Play();
+                    break;
+
+                case Episode.Episode2:
+                    Debug.Log("Playing sound ep2");
+                    PoppaMilk.clip = poppaEpisode2[sound];
+                    PoppaMilk.Play();
+                    break;
+
+                case Episode.Episode3:
+                    Debug.Log("Playing sound ep3");
+                    PoppaMilk.clip = poppaEpisode3[sound];
+                    PoppaMilk.Play();
+                    break;
+
+                case Episode.Presentation:
+                    //Debug.Log("playing sound presentation");
+                    PoppaMilk.clip = presentation[sound];
+                    PoppaMilk.Play();
+                    break;
+                }
+            }
+        return PoppaMilk;
+        }
+
+    public bool CheckPlaySoyBoyPlaying() {
+        return PoppaMilk.isPlaying;
+        }
+
+    private IEnumerator QueueSoyBoy(int sound, Episode ep) {
+        //Debug.Log("Queued");
+        yield return new WaitWhile(() => PoppaMilk.isPlaying);
+        switch (ep) {
+            case Episode.Episode1:
+                PoppaMilk.clip = poppaEpisode1[sound];
+                PoppaMilk.Play();
+                break;
+
+            case Episode.Episode2:
+                PoppaMilk.clip = poppaEpisode2[sound];
+                PoppaMilk.Play();
+                break;
+
+            case Episode.Episode3:
+                PoppaMilk.clip = poppaEpisode3[sound];
+                PoppaMilk.Play();
+                break;
+            case Episode.Presentation:
+                PoppaMilk.clip = presentation[sound];
+                PoppaMilk.Play();
+                break;
+            }
+        //Debug.Log("unloaded");
+        }
 
     //Play sounds that have to do with interactions, 3 sounds can play at once
     public AudioSource PlayInteractableSound(InteractableSound sound) {

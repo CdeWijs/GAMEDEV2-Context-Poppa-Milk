@@ -14,6 +14,7 @@ public class LevelTimer : MonoBehaviour {
     public float subtractAmount = 0.1f; //The step the timer downgrades
     private bool endingCalled = false; // make sure to only call the ending of the level once
     private bool isActive = false;
+    public GameObject currentLevel;
 
     //A simple timer
     void Update() {
@@ -33,8 +34,7 @@ public class LevelTimer : MonoBehaviour {
                 }
             else {
                 //level done
-                StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
-                Debug.Log("called ending");
+                StartCoroutine(currentLevel.GetComponent<ILevel>().EndLevelSequence());
                 endingCalled = true;
                 }
             }
