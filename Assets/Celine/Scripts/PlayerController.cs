@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 10;
-    private const float JUMP_FORCE = 20;
+    private const float JUMP_FORCE = 15;
     private const float GROUND_RADIUS = 0.2f;
 
     // INPUT
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         if (InputMobile.instance != null) // TEMP HACK!
         {
-            InputMobile.instance.CheckInput();
+            InputMobile.instance.GetTouch();
         }
         // Check axes of inputsystem
         inputHorizontal = inputSystem.GetAxis(GameAction.MOVE_HORIZONTAL);
