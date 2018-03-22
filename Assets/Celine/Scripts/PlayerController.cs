@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 10;
-    private const float JUMP_FORCE = 15;
+    private const float JUMP_FORCE = 18;
     private const float GROUND_RADIUS = 0.2f;
 
     // INPUT
