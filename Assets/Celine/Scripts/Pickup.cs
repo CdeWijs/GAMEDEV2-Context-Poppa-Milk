@@ -38,16 +38,6 @@ public class Pickup : MonoBehaviour, IInteractable {
         sprite.SetActive(false);
     }
 
-    private void Update() {
-        /*if (clickable)
-        {
-            if (inputSystem.GetColliderInteraction(collision2D, layerMask, this.name))
-            {
-                OnClick();
-            }
-        }*/
-    }
-
     public void OnTriggerEnter(Collider collision) {
         Debug.Log("Collided");
         if (collision.GetComponentInParent<PlayerController>()) {
@@ -74,7 +64,7 @@ public class Pickup : MonoBehaviour, IInteractable {
 
             // Change product of player
             productManager.ChangeProduct(thisProduct);
-            //GameManager.instance.levelTimer.AddToTimer(addDuration);
+            GameManager.instance.levelTimer.AddToTimer(addDuration);
             SetInActive();
         }
     }

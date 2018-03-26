@@ -7,15 +7,18 @@ public class InputMobile : InputSystem
 {
     public static InputMobile instance;
 
+    // Input axes
     private float horizontalInput;
     private float verticalInput;
 
     private Vector2 touchOrigin = -Vector2.one;
+    private float dragDistance;
+
     private Vector2 firstTouchPosition1;
     private Vector2 lastTouchPosition1;
     private Vector2 firstTouchPosition2;
     private Vector2 lastTouchPosition2;
-    private float dragDistance;
+
     private float screenCenterX;
     private float screenTopY;
 
@@ -49,13 +52,12 @@ public class InputMobile : InputSystem
             // get the first touch
             Touch firstTouch = Input.GetTouch(0);
             DetectTouch1(firstTouch);
-
-            if (Input.touchCount > 1)
-            {
-                // get the second touch
-                Touch secondTouch = Input.GetTouch(1);
-                DetectTouch2(secondTouch);
-            }
+        }
+        if (Input.touchCount > 1)
+        {
+            // get the second touch
+            Touch secondTouch = Input.GetTouch(1);
+            DetectTouch2(secondTouch);
         }
     }
 
