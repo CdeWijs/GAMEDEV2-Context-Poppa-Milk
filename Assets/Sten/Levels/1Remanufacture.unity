@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5481,6 +5481,12 @@ Prefab:
       propertyPath: debris
       value: 
       objectReference: {fileID: 1477060403240848, guid: 949bf80c81006ca41ab705b597e318fe,
+        type: 2}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
         type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -32912,6 +32918,12 @@ Prefab:
       propertyPath: leavePartsBehind
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
     - {fileID: 33003769925531870, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -33643,6 +33655,12 @@ Prefab:
       propertyPath: leavePartsBehind
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
     - {fileID: 33003769925531870, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -35047,6 +35065,12 @@ Prefab:
       propertyPath: debris
       value: 
       objectReference: {fileID: 1477060403240848, guid: 949bf80c81006ca41ab705b597e318fe,
+        type: 2}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
         type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -42986,6 +43010,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -0.59
       objectReference: {fileID: 0}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
     - {fileID: 33003769925531870, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -52841,6 +52871,12 @@ Prefab:
       propertyPath: thisProduct
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
     - {fileID: 33003769925531870, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}
@@ -57314,6 +57350,12 @@ Prefab:
       propertyPath: debris
       value: 
       objectReference: {fileID: 1477060403240848, guid: 949bf80c81006ca41ab705b597e318fe,
+        type: 2}
+    - target: {fileID: 114633373078461380, guid: 6874a5e2d630cd240a50b936c23c9be6,
+        type: 2}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 1156061443314458, guid: 0533b11292d72114ebf3d3f91dc8cd60,
         type: 2}
     m_RemovedComponents:
     - {fileID: 58724057096688594, guid: 6874a5e2d630cd240a50b936c23c9be6, type: 2}

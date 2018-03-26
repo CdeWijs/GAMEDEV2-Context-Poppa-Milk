@@ -143,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00000009224459, y: 0}
+  m_AnchoredPosition: {x: 0.00000009224459, y: 0.000061035156}
   m_SizeDelta: {x: 100, y: 700}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &139385043
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 322321308}
   - component: {fileID: 322321307}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Startscreen Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 604236781}
   - component: {fileID: 604236780}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Random Feitje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,11 +812,11 @@ RectTransform:
   m_Father: {fileID: 322321310}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 330}
-  m_SizeDelta: {x: 800, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: -550, y: -223}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &604236780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,16 +838,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 48
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 48
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '"Random feitje"'
 --- !u!222 &604236781
@@ -948,7 +948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: 0, y: -55.32184}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &761835757
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 761835760}
   - component: {fileID: 761835759}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Game Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 800592409}
   - component: {fileID: 800592408}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,10 +1090,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 16
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1101,7 +1101,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &800592409
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 823704822}
   - component: {fileID: 823704821}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1156,11 +1156,11 @@ RectTransform:
   m_Father: {fileID: 322321310}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: 300, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -14}
+  m_SizeDelta: {x: -500, y: -213}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &823704821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,13 +1187,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 48
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Poppa Milk
+  m_Text: 'POPPA MILK
+
+'
 --- !u!222 &823704822
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1312,8 +1314,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 5000, y: 934.5}
+  m_AnchoredPosition: {x: 0, y: 17.898163}
+  m_SizeDelta: {x: 5000, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907577079
 MonoBehaviour:
@@ -1678,7 +1680,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4015583883020188, guid: aa7de5fb2c4c1f24a819786f4002be44, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.64
+      value: 8.06
       objectReference: {fileID: 0}
     - target: {fileID: 4015583883020188, guid: aa7de5fb2c4c1f24a819786f4002be44, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2328,6 +2330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df0ce9dcb551784f8582cba6e789010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 1913639619}
   factsUI: {fileID: 604236780}
 --- !u!4 &1728060848
 Transform:
@@ -2376,8 +2379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -42}
+  m_SizeDelta: {x: 170, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913639621
 MonoBehaviour:
@@ -2696,7 +2699,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2707,7 +2710,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Game
+  m_Text: START GAME
 --- !u!222 &1970228844
 CanvasRenderer:
   m_ObjectHideFlags: 0

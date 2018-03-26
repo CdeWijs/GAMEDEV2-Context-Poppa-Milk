@@ -185,7 +185,6 @@ public class EpisodeManager : MonoBehaviour {
                 if(currentTextLine < presentationLines.Count -1) {
                     currentAudioLine++;
                     currentTextLine++;
-                    Debug.Log("next: " + currentTextLine);
                     next = false;
                     poppaAnimator.SetBool("isTalking", false);
                 }

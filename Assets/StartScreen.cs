@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class StartScreen : MonoBehaviour {
+public class StartScreen : MonoBehaviour
+{
+    public GameObject startButton;
 
     TextReader txtReader = new TextReader();
     private List<string> randomFacts = new List<string>();
@@ -10,23 +12,28 @@ public class StartScreen : MonoBehaviour {
     private Text factsUI;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         txtReader.Load("StartScreen", randomFacts);
         factsUI.text = randomFacts[Random.Range(0, randomFacts.Count)];
 	}
 
-    public void StartGame() {
+    public void StartGame()
+    {
+        // Set strat button to inactive, so the player stops pressing it.
+        startButton.SetActive(false);
         StartCoroutine(KickOff());
-        }
+    }
 
-    public IEnumerator KickOff() {
+    public IEnumerator KickOff()
+    {
         GameManager.instance.episodeManager.ResetLines();
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
-        Debug.Log("1");
         yield return new WaitForSeconds(5);
-        Debug.Log("2");
+
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         yield return new WaitForSeconds(5);
+
         GameManager.instance.episodeManager.FirstEpisode();
-        }
+    }
 }
