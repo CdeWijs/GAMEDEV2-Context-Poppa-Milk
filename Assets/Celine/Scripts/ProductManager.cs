@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Product {
-    HAARD,
-    LAMP,
-    MIRROR,
-    PERFUME,
-    WASHER
+    FIRE_PLACE, LAMP, MIRROR, PERFUME, WASHER, BEER, BEER_BOTTLE,
+    CANDLE, FISHBOWL, FRUITBASKET, GLASSES, GREEN_BOTTLE,
+    JAR1, JAR2, MAGNIFYING_GLASS, MILK_BOTTLE, SNOW_GLOBE, TEA,
+    VASE, WHINE_GLASS, ALARM_CLOCK, CLOCK, HAND_HELD_MIRROR,
+    MAKEUP_MIRROR, STANDING_MIRROR, MICROWAVE, TV_NEW, TV_OLD, PC,
+    MOBILE, PHOTO_FRAME, WASHER1, WASHER2,  WASHER3, WINDOW
 }
 
 public class ProductManager : MonoBehaviour
@@ -18,7 +19,7 @@ public class ProductManager : MonoBehaviour
     {
         switch (product)
         {
-            case Product.HAARD:
+            case Product.FIRE_PLACE:
                 head.SetBool("isHaard", true);
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
