@@ -29,9 +29,11 @@ public class StartScreen : MonoBehaviour
     {
         GameManager.instance.episodeManager.ResetLines();
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
 
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Soyboy, 5f));
         yield return new WaitForSeconds(5);
 
         GameManager.instance.episodeManager.FirstEpisode();
