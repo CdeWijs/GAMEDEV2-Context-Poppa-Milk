@@ -26,20 +26,27 @@ public class Recycle_level : MonoBehaviour, ILevel {
     public IEnumerator LevelDialogues() {
         yield return new WaitForSeconds(2);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         }
     public IEnumerator EndLevelSequence() {
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
         }
     }

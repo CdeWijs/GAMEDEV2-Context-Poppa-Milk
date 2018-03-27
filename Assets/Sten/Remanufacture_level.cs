@@ -15,6 +15,7 @@ public class Remanufacture_level : MonoBehaviour,ILevel {
     //Setup level with the correct lines
     void Start() {
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
         GameManager.instance.levelTimer.currentLevel = this.gameObject;
         }

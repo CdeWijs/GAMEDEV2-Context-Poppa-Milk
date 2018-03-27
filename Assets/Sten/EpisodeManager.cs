@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public enum Episode {Episode1, Episode2, Episode3,Episode4,Presentation};
-
+public enum Speaker {Poppa,Soyboy};
 public class EpisodeManager : MonoBehaviour {
     //Two components needed to create narrative
     private AudioManager audioManager;
@@ -20,6 +20,12 @@ public class EpisodeManager : MonoBehaviour {
     //UI elements
     [SerializeField]
     private Text subtitleTrack;
+    [SerializeField]
+    private Image poppaMilkImg;
+    [SerializeField]
+    private Image soyBoyImg;
+    [SerializeField]
+    private GameObject background;
 
     //Level variables
     public bool passedCheckpoint = false;
@@ -210,4 +216,27 @@ public class EpisodeManager : MonoBehaviour {
     public int GetEpisode() {
         return currentEpisode;
         }
+
+    public IEnumerator Talk(Speaker who, float duration) {
+        poppaMilkImg.enabled = false;
+        soyBoyImg.enabled = false;
+        subtitleTrack.enabled = true;
+        switch (who) {
+            case Speaker.Poppa:
+                poppaMilkImg.enabled = true; Debug.Log("enabled");
+                //background.SetActive(true);
+                break;
+            case Speaker.Soyboy:
+                soyBoyImg.enabled = true;
+                //background.SetActive(true);
+                break;
+        }
+
+        yield return new WaitForSeconds(duration);
+        soyBoyImg.enabled = false;
+        poppaMilkImg.enabled = false;
+        //background.SetActive(false);
+        subtitleTrack.enabled = false;
+    }
+
 }
