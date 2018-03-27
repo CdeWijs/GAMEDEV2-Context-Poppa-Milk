@@ -19,7 +19,7 @@ public class AchievementPanel : MonoBehaviour
 
     private void Start()
     {
-        databaseScript = GetComponent<AchievementDatabase>();
+        databaseScript = FindObjectOfType<AchievementDatabase>();
         database = databaseScript.achievementDatabase;
 
         playerController = FindObjectOfType<PlayerController>();

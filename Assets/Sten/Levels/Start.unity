@@ -652,6 +652,7 @@ Transform:
   - {fileID: 1423456423}
   - {fileID: 632230057}
   - {fileID: 761835758}
+  - {fileID: 1326245201}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1292,7 +1293,6 @@ GameObject:
   - component: {fileID: 1044202244}
   - component: {fileID: 1044202243}
   - component: {fileID: 1044202241}
-  - component: {fileID: 1044202242}
   m_Layer: 5
   m_Name: AchievementPanel
   m_TagString: Untagged
@@ -1316,23 +1316,6 @@ MonoBehaviour:
   achievementPrefab: {fileID: 1461140214738230, guid: b7e12e38a260bfb4da7a6d52261d0785,
     type: 2}
   achievementContainer: {fileID: 71737352}
---- !u!114 &1044202242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1044202240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7037a45f96f6b64bbc3fcabfe75423c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  achievementSprites:
-  - {fileID: 21300000, guid: 12c3520800b3ddc42ae401759d48b694, type: 3}
-  - {fileID: 21300000, guid: 7e5052f375d9f5245b3965e5442b080b, type: 3}
-  - {fileID: 21300000, guid: 185fe8611751fab47908a5eaecdae6a5, type: 3}
-  achievementPanel: {fileID: 0}
-  index: 0
 --- !u!114 &1044202243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,6 +1657,51 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa7de5fb2c4c1f24a819786f4002be44, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1326245200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1326245201}
+  - component: {fileID: 1326245202}
+  m_Layer: 0
+  m_Name: AchievementDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326245201
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326245200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 352550911}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326245202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326245200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7037a45f96f6b64bbc3fcabfe75423c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementSprites:
+  - {fileID: 21300000, guid: 12c3520800b3ddc42ae401759d48b694, type: 3}
+  - {fileID: 21300000, guid: 7e5052f375d9f5245b3965e5442b080b, type: 3}
+  - {fileID: 21300000, guid: 185fe8611751fab47908a5eaecdae6a5, type: 3}
+  index: 0
 --- !u!1 &1419258430
 GameObject:
   m_ObjectHideFlags: 0

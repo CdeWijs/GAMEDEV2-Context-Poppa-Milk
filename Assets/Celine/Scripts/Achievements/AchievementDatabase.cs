@@ -6,13 +6,13 @@ public class AchievementDatabase : MonoBehaviour
 {
     public Sprite[] achievementSprites;
     public List<Achievement> achievementDatabase = new List<Achievement>();
-    public AchievementPanel achievementPanel;
+    private AchievementPanel achievementPanel;
 
     public int index = 0;
 
     private void Awake()
     {
-        achievementPanel = gameObject.GetComponent<AchievementPanel>();
+        achievementPanel = FindObjectOfType<AchievementPanel>();
         
         // CREATE YOUR ACHIEVEMENTS HERE:
 

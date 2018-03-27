@@ -35,10 +35,6 @@ public class Pickup : MonoBehaviour, IInteractable
 
         productManager = player.GetComponent<ProductManager>();
 
-        // Get achievements
-        //achievementDatabaseScript = FindObjectOfType<AchievementDatabase>();
-        //database = achievementDatabaseScript.achievementDatabase;
-
         // Get blue circle and set inactive
         sprite = transform.GetChild(0).gameObject;
         sprite.SetActive(false);
@@ -66,11 +62,6 @@ public class Pickup : MonoBehaviour, IInteractable
     {
         if (clickable)
         {
-            // Unlock achievement and iterate to next one with variable from the achievementdatabase script
-            //database[achievementDatabaseScript.index].isUnlocked = true;
-            //achievementDatabaseScript.achievementPanel.UpdateList();
-            //achievementDatabaseScript.index++;
-
             Vector3 position = new Vector3(transform.position.x, transform.position.y + 1f, -2f);
             GameObject particles = Instantiate(particleEffect, position, Quaternion.identity) as GameObject;
 
