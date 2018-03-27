@@ -37,7 +37,10 @@ public class AchievementPanel : MonoBehaviour
         gameObject.SetActive(true);
         openButton.SetActive(false);
         closeButton.SetActive(true);
-        //playerController.ControlSwitch(true);
+        if (playerController)
+        {
+            playerController.ControlSwitch(true);
+        }
     }
 
     public void ClosePanel()
@@ -45,13 +48,15 @@ public class AchievementPanel : MonoBehaviour
         gameObject.SetActive(false);
         closeButton.SetActive(false);
         openButton.SetActive(true);
-        //playerController.ControlSwitch(false);
+        if (playerController)
+        {
+            playerController.ControlSwitch(false);
+        }
     }
 
     private void CreateList()
     {
         Vector2 containerSize = achievementContainer.GetComponent<RectTransform>().sizeDelta;
-        //containerSize = new Vector2(0, 0);
 
         float padding = -Screen.height * 0.05f;
         for (int i = 0; i < database.Count; i++)
@@ -62,14 +67,10 @@ public class AchievementPanel : MonoBehaviour
 
             go.transform.GetChild(0).GetComponent<Image>().sprite = database[i].Sprite;
             go.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
-            go.transform.GetChild(1).GetComponent<Text>().text = database[i].Name;
-            go.transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 0.3f);
-            go.transform.GetChild(2).GetComponent<Text>().text = database[i].Description;
-            go.transform.GetChild(2).GetComponent<Text>().color = new Color(1, 1, 1, 0.3f);
 
             achievementUI.Add(go);
 
-            padding -= Screen.height * 0.2f;
+            padding -= Screen.height * 0.25f;
         }
     }
 
@@ -79,15 +80,13 @@ public class AchievementPanel : MonoBehaviour
         {
             if(database[i].isUnlocked == true)
             {
-                achievementUI[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                achievementUI[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 1);
-                achievementUI[i].transform.GetChild(2).GetComponent<Text>().color = new Color(1, 1, 1, 1);
+                achievementUI[i].transform.GetChild(0).gameObject.SetActive(true);
+                achievementUI[i].transform.GetChild(1).gameObject.SetActive(false);
             }
             else if (database[i].isUnlocked == false)
             {
-                achievementUI[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
-                achievementUI[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 0.3f);
-                achievementUI[i].transform.GetChild(2).GetComponent<Text>().color = new Color(1, 1, 1, 0.3f);
+                achievementUI[i].transform.GetChild(0).gameObject.SetActive(false);
+                achievementUI[i].transform.GetChild(1).gameObject.SetActive(true);
             }
         }
     }
