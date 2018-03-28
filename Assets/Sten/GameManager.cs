@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
         episodeManager.EpisodeInit();
         audioManager.AudioInit();
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Presentation);
-        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 3f));
         //Set starting screen settings
         levelTimer.SetupTimer(1f, 0.1f, false);
         scoreTracker.WipeScore();
