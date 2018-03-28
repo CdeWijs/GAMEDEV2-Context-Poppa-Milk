@@ -53,7 +53,7 @@ public class Remanufacture_level : MonoBehaviour,ILevel {
         yield return new WaitForSeconds(5);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
         StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
         }
     }

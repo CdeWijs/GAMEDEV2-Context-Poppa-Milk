@@ -23,4 +23,8 @@ public class ScoreTracker : MonoBehaviour {
         scoreField.gameObject.SetActive(active);
         scoreField.text = score.ToString();
         }
+
+    public int GetScore() {
+        return score;
+    }
 }

@@ -25,12 +25,18 @@ public class Reuse_level : MonoBehaviour, ILevel {
         }
 
     public IEnumerator EndLevelSequence() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(2);
         StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
         }
 
     public IEnumerator LevelDialogues() {
-        Debug.Log("started level 2");
+        Debug.Log("started level 3");
         yield return new WaitForSeconds(2);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
         StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
@@ -40,5 +46,14 @@ public class Reuse_level : MonoBehaviour, ILevel {
         yield return new WaitForSeconds(8);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
         StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 4f));
+        yield return new WaitForSeconds(4);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Soyboy, 3f));
+        yield return new WaitForSeconds(3);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 3f));
     }
 }

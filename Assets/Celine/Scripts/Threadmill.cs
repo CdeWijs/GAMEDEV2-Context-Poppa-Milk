@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Threadmill : MonoBehaviour
 {
+    public bool direction = false;
     public float speed = 3;
 
     private List<GameObject> objectsInTrigger = new List<GameObject>();
@@ -30,7 +31,11 @@ public class Threadmill : MonoBehaviour
         {
             for (int i = 0; i < objectsInTrigger.Count; i++)
             {
-                objectsInTrigger[i].transform.Translate(Vector3.left * speed * Time.deltaTime);
+                if (!direction) {
+                    objectsInTrigger[i].transform.Translate(Vector3.left * speed * Time.deltaTime);
+                }else {
+                    objectsInTrigger[i].transform.Translate(Vector3.right * speed * Time.deltaTime);
+                }
             }
         }
     }

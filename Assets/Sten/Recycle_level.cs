@@ -25,11 +25,11 @@ public class Recycle_level : MonoBehaviour, ILevel {
         Debug.Log("started level 1");
         yield return new WaitForSeconds(2);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 10f));
+        yield return new WaitForSeconds(12);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(8);
-        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
-        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 10f));
-        yield return new WaitForSeconds(15);
         GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode1);
         StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
         yield return new WaitForSeconds(5);
