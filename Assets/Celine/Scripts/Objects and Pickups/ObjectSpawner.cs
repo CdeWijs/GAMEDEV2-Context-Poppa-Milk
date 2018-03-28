@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour {
 
     public GameObject objectPrefab;
-    public float timeBetweenObjects = 5.0f;
+    public float timeBetweenObjects = 4.0f;
 
     private List<GameObject> objectPool = new List<GameObject>();
     private float time;

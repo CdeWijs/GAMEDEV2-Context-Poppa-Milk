@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4542218205735042}
-  - component: {fileID: 33949521175915742}
-  - component: {fileID: 23474912824699400}
   - component: {fileID: 114609423599443026}
   - component: {fileID: 65996334104453802}
+  - component: {fileID: 212701679748381566}
   m_Layer: 0
   m_Name: Object
   m_TagString: Untagged
@@ -68,54 +67,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869042507169244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.24, y: -1.03, z: 0}
+  m_LocalPosition: {x: 11.501045, y: -1.2737265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4542218205735042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23474912824699400
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783815030684628}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: ac54c6eaf27b4524dbfa47d74b844e6b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33949521175915742
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783815030684628}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &50129182555313010
 Rigidbody2D:
   serializedVersion: 4
@@ -159,7 +117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!65 &65996334104453802
 BoxCollider:
@@ -198,6 +156,87 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  reusableSprites:
+  - {fileID: 21300000, guid: 4c40f208dd451ac4b9123e9c1c9e2729, type: 3}
+  - {fileID: 21300000, guid: 857339f88a2b33c4eb0595f622df8b34, type: 3}
+  - {fileID: 21300000, guid: 130e01f34e26b7941a8333c90c462ad9, type: 3}
+  - {fileID: 21300000, guid: ac1376709f3bb894f835307292f60c0f, type: 3}
+  - {fileID: 21300000, guid: ef610e57259900843b51ad277dc78058, type: 3}
+  - {fileID: 21300000, guid: 44b3878b27606e0458cce0a64e4e36fc, type: 3}
+  - {fileID: 21300000, guid: 16f51d0ba197fa742848f395c650a5f0, type: 3}
+  - {fileID: 21300000, guid: af59f634aa5c5fb458b672afe7660ecc, type: 3}
+  - {fileID: 21300000, guid: 4eec895879762ed418225d65ecd9766d, type: 3}
+  - {fileID: 21300000, guid: 2e6b7d93535fe35438966fa379bdf073, type: 3}
+  - {fileID: 21300000, guid: 9335377534ea72442b24df6e69d6a65d, type: 3}
+  - {fileID: 21300000, guid: 0f969b58b94878a42b5cf00af7f89329, type: 3}
+  - {fileID: 21300000, guid: 87a0140531bb56d47b41f13232d3f9c4, type: 3}
+  recyclableSprites:
+  - {fileID: 21300000, guid: 56191c3c068baf045b982f4cb7217bbb, type: 3}
+  - {fileID: 21300000, guid: eabbc1c2c93482f488f0d30a88c9e1ad, type: 3}
+  - {fileID: 21300000, guid: 2ee21bf9cd4d0ba459942a065bbec3e2, type: 3}
+  - {fileID: 21300000, guid: 49dae4c0aed6a244eb81969972b02464, type: 3}
+  - {fileID: 21300000, guid: 201d771b38a9ad644b9791ca21482d56, type: 3}
+  - {fileID: 21300000, guid: 9e09376ac7788a649988fd409ce2383c, type: 3}
+  - {fileID: 21300000, guid: 9e7826545ba012d4191ed58e73df69a4, type: 3}
+  - {fileID: 21300000, guid: 0027064baea9f12429c03914bcd1d42b, type: 3}
+  - {fileID: 21300000, guid: 99b06973189977345a1a9a2ba1303ef5, type: 3}
+  - {fileID: 21300000, guid: c96959dfe42c73a4c8a564b702b8553e, type: 3}
+  - {fileID: 21300000, guid: 7a4200fa532aa584b843ffb134dcd43e, type: 3}
+  - {fileID: 21300000, guid: e4f0dc03d92736e4f81c16935f9da626, type: 3}
+  - {fileID: 21300000, guid: d29eee5c4a724d642a0a5cd4807af9d5, type: 3}
+  - {fileID: 21300000, guid: 2165f1d106f72cc428ab739b42b361e2, type: 3}
+  - {fileID: 21300000, guid: 20f624e8e6ba6084694f40d22959714d, type: 3}
+  - {fileID: 21300000, guid: bd13d65b2349e2b4c829ba07b497f696, type: 3}
+  - {fileID: 21300000, guid: ba981d6c8fe944f4d8837e3e7f7586cd, type: 3}
+  - {fileID: 21300000, guid: 113718f5f1ece5d4cb6e53a2f3d7da40, type: 3}
+  - {fileID: 21300000, guid: 1824e425791c4344eb6766864f569b71, type: 3}
+  - {fileID: 21300000, guid: 836585a372fe7bf47bae5b1315cd4f6f, type: 3}
+  - {fileID: 21300000, guid: a44b00ebcd249414a8def7f6c4bd7dda, type: 3}
+  - {fileID: 21300000, guid: 52c34df9e0cbb1545adbb9e5ca5b7051, type: 3}
   clickable: 1
   scoreAmount: 10
   targetPos: {fileID: 0}
+--- !u!212 &212701679748381566
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783815030684628}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.87, y: 3.39}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
