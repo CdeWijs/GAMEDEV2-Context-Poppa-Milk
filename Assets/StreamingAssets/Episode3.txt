@@ -1,1 +1,3 @@
-Episode3 : REUSE
+Let's see if you have learned anything so far.
+Of Course reusing the whole product is better than a part of it, so spot the items that can be reused and move them to the other belt by clicking on them. 
+Don’t get hit by the recyclable items. Goodluck my boy, try and get a highscore!

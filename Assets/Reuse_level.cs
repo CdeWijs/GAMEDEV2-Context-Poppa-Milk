@@ -16,9 +16,8 @@ public class Reuse_level : MonoBehaviour, ILevel {
         GameManager.instance.levelTimer.SetupInvisibleTimer(levelDuration, 0.1f, true);
         GameManager.instance.levelTimer.currentLevel = this.gameObject;
         GameManager.instance.episodeManager.ResetLines();
-        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
-
-        }
+        StartCoroutine(LevelDialogues());
+    }
 
     // Update is called once per frame
     void Update() {
@@ -29,4 +28,17 @@ public class Reuse_level : MonoBehaviour, ILevel {
         yield return new WaitForSeconds(1);
         StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
         }
+
+    public IEnumerator LevelDialogues() {
+        Debug.Log("started level 2");
+        yield return new WaitForSeconds(2);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 8f));
+        yield return new WaitForSeconds(8);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode3);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
     }
+}

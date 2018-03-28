@@ -14,16 +14,46 @@ public class Remanufacture_level : MonoBehaviour,ILevel {
     private bool hasTimer = true;
     //Setup level with the correct lines
     void Start() {
-        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
-        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        GameManager.instance.episodeManager.ResetLines();
         GameManager.instance.levelTimer.SetupTimer(timerDuration, subtractAmount, hasTimer);
         GameManager.instance.levelTimer.currentLevel = this.gameObject;
+        StartCoroutine(LevelDialogues());
         }
 
     void Update() { }
 
+    public IEnumerator LevelDialogues() {
+        Debug.Log("started level 2");
+        yield return new WaitForSeconds(2);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Soyboy, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 10f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(8);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+    }
+
+
     public IEnumerator EndLevelSequence() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Soyboy, 5f));
+        yield return new WaitForSeconds(5);
+        GameManager.instance.episodeManager.CallEpisodeAudioAndSubs(Episode.Episode2);
+        StartCoroutine(GameManager.instance.episodeManager.Talk(Speaker.Poppa, 5f));
+        yield return new WaitForSeconds(5);
         StartCoroutine(GameManager.instance.episodeManager.EndCurrentEpisode());
         }
     }
