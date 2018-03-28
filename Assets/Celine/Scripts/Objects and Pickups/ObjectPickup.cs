@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectPickup : MonoBehaviour, IInteractable
 {
     public LayerMask layerMask;     // declare in inspector to "Object"
+    public Sprite[] reusableSprites;
+    public Sprite[] recyclableSprites;
 
     [SerializeField]
     private bool clickable;
@@ -53,14 +55,12 @@ public class ObjectPickup : MonoBehaviour, IInteractable
         // The object has 40% chance of being clickable and thus recyclable.
         if (random < 40) {
             clickable = true;
-            gameObject.GetComponent<Renderer>().material.color = Color.red; // TEMP HACK
+            gameObject.GetComponent<SpriteRenderer>().sprite = reusableSprites[Random.Range(0, reusableSprites.Length - 1)];
         }
         else {
             clickable = false;
             gameObject.GetComponent<Renderer>().material.color = Color.white; // TEMP HACK
+            gameObject.GetComponent<SpriteRenderer>().sprite = recyclableSprites[Random.Range(0, reusableSprites.Length - 1)];
         }
-
-        // Give the object a random scale
-        transform.parent.transform.localScale = new Vector3(Random.Range(1, 4), Random.Range(1, 4), transform.localScale.z);
     }
 }
