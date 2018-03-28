@@ -66,7 +66,7 @@ public class AchievementPanel : MonoBehaviour
             go.GetComponent<RectTransform>().position = new Vector3(achievementContainer.position.x, achievementContainer.position.y + padding, 0);
 
             go.transform.GetChild(0).GetComponent<Image>().sprite = database[i].Sprite;
-            go.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
+            Debug.Log(database[i].Sprite);
 
             achievementUI.Add(go);
 

@@ -68,7 +68,7 @@ public class Pickup : MonoBehaviour, IInteractable
             // Change product of player
             productManager.ChangeProduct(thisProduct);
 
-            //GameManager.instance.levelTimer.AddToTimer(addDuration);
+            GameManager.instance.levelTimer.AddToTimer(addDuration);
             SetInActive();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Product {
     FIRE_PLACE, LAMP, MIRROR, PERFUME, WASHER, BEER, BEER_BOTTLE,
@@ -11,12 +12,77 @@ public enum Product {
     MOBILE, PHOTO_FRAME, WASHER1, WASHER2,  WASHER3, WINDOW
 }
 
-public class ProductManager : MonoBehaviour
+public class ProductManager : MonoBehaviour, IObservable
 {
     public Animator head;         // declare in inspector
-    
+
+    private int timesChanged = 0;
+    private List<IObserver> observers = new List<IObserver>();
+    private Scene currentScene;
+    private AchievementDatabase achievementDatabase;
+
+    private void OnEnable()
+    {
+        SceneManager.activeSceneChanged += ChangeCurrentSceneIndex;
+    }
+
+    private void Start()
+    {
+        achievementDatabase = FindObjectOfType<AchievementDatabase>();
+        AddObserver(achievementDatabase);
+    }
+
+    // Add observer
+    public virtual void AddObserver(IObserver observer)
+    {
+        this.observers.Add(observer);
+    }
+
+    // Remove observer
+    public virtual void RemoveObserver(IObserver observer)
+    {
+        this.observers.Remove(observer);
+    }
+
+    // Notify observers of event
+    public virtual void NotifyObservers(GameEvent ev)
+    {
+        foreach (var observer in this.observers)
+        {
+            observer.OnNotify(ev);
+        }
+    }
+
+    private void ChangeCurrentSceneIndex(Scene prevScene, Scene newScene)
+    {
+        currentScene = newScene;
+
+        if (currentScene.buildIndex == 2) { NotifyObservers(GameEvent.Complete_First_Level); }
+        if (currentScene.buildIndex == 3) { NotifyObservers(GameEvent.Complete_Second_Level); }
+        if (currentScene.buildIndex == 4) { NotifyObservers(GameEvent.Completed_Third_Level); }
+    }
+
     public void ChangeProduct(Product product)
     {
+        // Get number of times player has changed into a new product per episode
+        timesChanged++;
+
+        // Check when player changes into first product
+        bool firstProductChange = false;
+        if (currentScene.buildIndex == 1 && timesChanged > 0 && firstProductChange == false)
+        {
+            firstProductChange = true;
+            this.NotifyObservers(GameEvent.Change_Into_First_Product);
+        }
+
+        // Check when player changes into first remanufactured product
+        bool firstRemanufactureChange = false;
+        if (currentScene.buildIndex == 2 && timesChanged > 0 && firstRemanufactureChange == false)
+        {
+            firstRemanufactureChange = true;
+            this.NotifyObservers(GameEvent.Change_Into_First_Remanufactured_Product);
+        }
+
         switch (product)
         {
             case Product.FIRE_PLACE:
@@ -24,7 +90,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -61,7 +127,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", true);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -98,7 +164,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", true);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", true);
                 head.SetBool("isCandle", true);
@@ -135,7 +201,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", true);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -209,7 +275,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", true);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -246,7 +312,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", true);
                 head.SetBool("isCandle", false);
@@ -283,7 +349,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", true);
@@ -320,7 +386,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -357,7 +423,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -394,7 +460,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -431,7 +497,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -468,7 +534,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -505,7 +571,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -542,7 +608,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -579,7 +645,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -616,7 +682,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -653,7 +719,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -690,7 +756,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -727,7 +793,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -764,7 +830,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -801,7 +867,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -838,7 +904,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -875,7 +941,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -912,7 +978,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -949,7 +1015,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -986,7 +1052,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1023,7 +1089,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1056,11 +1122,12 @@ public class ProductManager : MonoBehaviour
                 break;
 
             case Product.MOBILE:
+                NotifyObservers(GameEvent.Change_Into_Phone);
                 head.SetBool("isHaard", false);
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1097,7 +1164,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1134,7 +1201,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1171,7 +1238,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1208,7 +1275,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
@@ -1245,7 +1312,7 @@ public class ProductManager : MonoBehaviour
                 head.SetBool("isLamp", false);
                 head.SetBool("isMirror", false);
                 head.SetBool("isPerfume", false);
-                head.SetBool("isWasher", false);
+                head.SetBool("isWasher1", false);
                 head.SetBool("isBeer", false);
                 head.SetBool("isBeerBottle", false);
                 head.SetBool("isCandle", false);
