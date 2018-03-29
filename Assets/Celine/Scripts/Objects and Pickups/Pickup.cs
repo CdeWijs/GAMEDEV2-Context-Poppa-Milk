@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour, IInteractable
     private GameObject sprite;
 
     [SerializeField]
-    private float addDuration = 0.2f;
+    private float addDuration = 0.1f;
 
     [SerializeField]
     private bool leavePartsBehind = false;

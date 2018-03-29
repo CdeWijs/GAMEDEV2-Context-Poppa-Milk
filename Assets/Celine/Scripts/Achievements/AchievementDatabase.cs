@@ -39,28 +39,28 @@ public class AchievementDatabase : MonoBehaviour, IObserver
         Achievement achievement4 = new Achievement();
         achievement4.Name = "Picked Up in Africa";
         achievement4.isUnlocked = false;
-        achievement4.Sprite = achievementSprites[0];
+        achievement4.Sprite = achievementSprites[3];
         achievementDatabase.Add(achievement4);
 
         // Achievement 5
         Achievement achievement5 = new Achievement();
-        achievement5.Name = "Better Than REcycling";
+        achievement5.Name = "Better Than Recycling";
         achievement5.isUnlocked = false;
-        achievement5.Sprite = achievementSprites[1];
+        achievement5.Sprite = achievementSprites[4];
         achievementDatabase.Add(achievement5);
 
         // Achievement 6
         Achievement achievement6 = new Achievement();
         achievement6.Name = "Endure The Jokes";
         achievement6.isUnlocked = false;
-        achievement6.Sprite = achievementSprites[2];
+        achievement6.Sprite = achievementSprites[5];
         achievementDatabase.Add(achievement6);
 
         // Achievement 7
         Achievement achievement7 = new Achievement();
         achievement7.Name = "Always Listen To Poppa";
         achievement7.isUnlocked = false;
-        achievement7.Sprite = achievementSprites[3];
+        achievement7.Sprite = achievementSprites[6];
         achievementDatabase.Add(achievement7);
     }
 
